@@ -1,6 +1,6 @@
 server {
   server_name localhost;
-  root /var/www/html;
+  root <%= @wp_directory %> ;
   index index.php;
   location = /favicon.ico {
     log_not_found off;
