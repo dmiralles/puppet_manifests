@@ -6,4 +6,7 @@ class apache {
     ensure  => running,
     require => Package["apache2"],
   }
+  file {'/var/www/html/index.html':
+    ensure => absent,
+  }
 }
