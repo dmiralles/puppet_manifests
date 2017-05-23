@@ -6,7 +6,7 @@ class wordpress (
         $wp_database_password = 'prueba123',
         $wp_default_dir       = '/var/www/html'){
 
-        require apache
+        include apache
         include mysql
         include  php
         exec { "Download wordpress":
