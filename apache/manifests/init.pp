@@ -8,5 +8,6 @@ class apache {
   }
   file {'/var/www/html/index.html':
     ensure => absent,
+    require => Package["apache2"],    
   }
 }
