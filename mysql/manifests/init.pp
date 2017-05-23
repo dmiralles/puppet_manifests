@@ -29,7 +29,7 @@ class mysql (
         }
         exec { "Create user for database":
                 path => ["/bin", "/usr/bin"],
-                command => "mysql -u root -p$mysql_password -e 'CREATE USER '$wp_database_user'@'localhost' IDENTIFIED BY '$wp_database_password'; GRANT ALL PRIVILEGES ON * . * TO '$wp_database_user'@'localhost'; FLUSH PRIVILEGES;'",
+                command => "mysql -u root -p$mysql_password -e \"CREATE USER '$wp_database_user'@'localhost' IDENTIFIED BY '$wp_database_password'; GRANT ALL PRIVILEGES ON * . * TO '$wp_database_user'@'localhost'; FLUSH PRIVILEGES;\"",
                 require => Exec["Create WP database"],
         }
 
