@@ -7,7 +7,7 @@ class wordpress (
         $wp_default_dir       = '/var/www/html'){
 
         exec { "Download wordpress":
-                command =>"/usr/bin/wget http://wordpress.org/wordpress-latest.tar.gz":
+                command =>"/usr/bin/wget http://wordpress.org/wordpress-latest.tar.gz",
                 cwd => "/tmp",
         }
         exec { "Uncompress wordpress":

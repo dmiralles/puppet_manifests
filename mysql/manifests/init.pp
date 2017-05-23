@@ -30,7 +30,7 @@ class mysql (
         exec { "Create user for database":
                 unless => "mysqladmin -uroot -p$mysql_password status",
                 path => ["/bin", "/usr/bin"],
-                command => "mysqladmin -uroot password $mysql_password -e\ "CREATE USER '$wp_database_user'@'localhost' IDENTIFIED BY '$wp_database_pass' \ GRANT ALL PRIVILEGES ON * . * TO '$wp_database_user@'localhost' \ FLUSH PRIVILEGES;",
+                command => "mysqladmin -uroot password $mysql_password -e CREATE USER '$wp_database_user'@'localhost' IDENTIFIED BY '$wp_database_pass'; GRANT ALL PRIVILEGES ON * . * TO '$wp_database_user@'localhost'; FLUSH PRIVILEGES;",
                 require => Exec["Create WP database"],
         }
 
