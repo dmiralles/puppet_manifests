@@ -6,6 +6,9 @@ class wordpress (
         $wp_database_password = 'prueba123',
         $wp_default_dir       = '/var/www/html'){
 
+        require apache
+        require mysql
+        require php
         exec { "Download wordpress":
                 command =>"/usr/bin/wget http://wordpress.org/wordpress-latest.tar.gz",
                 cwd => "/tmp",
