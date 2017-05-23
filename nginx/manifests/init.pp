@@ -4,7 +4,7 @@ class nginx (
     package {'nginx':
         ensure => present,
     }
-    file { "nginx_config_dir/default":
+    file { "$nginx_config_dir/default":
             ensure  => present,
             mode    => '0644',
             content => template("nginx/default.erb"),
