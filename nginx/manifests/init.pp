@@ -8,5 +8,6 @@ class nginx (
             ensure  => present,
             mode    => '0644',
             content => template("nginx/default.erb"),
+            require => Package['nginx'],
     }
 }
