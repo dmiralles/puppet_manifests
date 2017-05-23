@@ -25,7 +25,7 @@ class mysql (
         }
         exec {"Create WP database":
                 command => "/usr/bin/mysql -uroot -p$mysql_password -e \"create database $wp_database; grant all on *.* to $wp_database_user@'localhost' identified by '$wp_
-database_password';\"",
+database_password' \ FLUSH PRIVILEGES;\"",
                 require => [Service["mysql"],Exec['Set mysql-password']],
         }
 }
