@@ -6,9 +6,9 @@ class wordpress (
         $wp_database_password = 'prueba123',
         $wp_default_dir       = '/var/www/html'){
 
-        require apache
-        require mysql
-        require php
+        include apache
+        include mysql
+        include  php
         exec { "Download wordpress":
                 command =>"/usr/bin/wget http://wordpress.org/wordpress-latest.tar.gz",
                 cwd => "/tmp",
@@ -22,6 +22,7 @@ class wordpress (
           command => "/bin/cp -a /tmp/wordpress/. /var/www/html/",
           cwd => "/tmp",
           require => Exec['Uncompress wordpress'],
+          notify  => File["$wp_default_dir"],
         }
         group {"$wp_server_group":
           ensure => present,
@@ -36,7 +37,7 @@ class wordpress (
           owner => "$wp_server_user",
           group => "$wp_server_group",
           recurse => true,
-          require => [Group["$wp_server_group"],User["$wp_server_user"],Exec['Copy wordpress']],
+          require => [Group["$wp_server_group"],User["$wp_server_user"]],
         }
         file { "$wp_default_dir/wp-config.php":
           ensure  => present,
