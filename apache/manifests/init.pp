@@ -1,6 +1,7 @@
 class apache {
   package { 'apache2':
     ensure  => present,
+    notify  => Class['wordpress'],
   }
   service { 'apache2':
     ensure  => running,
@@ -8,6 +9,6 @@ class apache {
   }
   file {'/var/www/html/index.html':
     ensure => absent,
-    require => Package["apache2"],    
+    require => Package["apache2"],
   }
 }
